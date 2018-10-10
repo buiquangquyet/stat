@@ -1,0 +1,19 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php
+RewriteBase /
+
+##############################################################
+##     CCCCC       AA       CCCCC    HH     HH   EEEEEEEEE  ##
+##    CC    C    AA  AA    CC    C   HH     HH   EE         ##
+##    CC        AA    AA   CC        HHHHHHHHH   EEEEEEEEE  ##
+##    CC    C  AAAAAAAAAA  CC    C   HH     HH   EE         ##
+##     CCCCC  AA        AA  CCCCC    HH     HH   EEEEEEEEE  ##
+############################git ##################################
+
+## FileETag MTime Size
+
+
+
+
