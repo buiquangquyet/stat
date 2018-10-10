@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51c86989-8e47-4b58-9885-02209eff281e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/serveryii/common/models/mysql/db/Country.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/serveryii/common/models/mysql/db/User.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client" afterPath="$PROJECT_DIR$/client" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serveryii/common/models/LoginForm.php" afterPath="$PROJECT_DIR$/serveryii/common/models/LoginForm.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serveryii/common/models/User.php" afterPath="$PROJECT_DIR$/serveryii/common/models/User.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -378,7 +374,7 @@
       <workItem from="1534228828649" duration="652000" />
       <workItem from="1535422017487" duration="401000" />
       <workItem from="1538793781765" duration="1708000" />
-      <workItem from="1539162294654" duration="663000" />
+      <workItem from="1539162294654" duration="688000" />
     </task>
     <task id="LOCAL-00001" summary="dev">
       <created>1520051419190</created>
@@ -429,11 +425,18 @@
       <option name="project" value="LOCAL" />
       <updated>1538794099243</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Rewrite Url Yii">
+      <created>1539162979928</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1539162979928</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15551000" />
+    <option name="totallyTimeSpent" value="15576000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
