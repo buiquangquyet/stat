@@ -19,20 +19,22 @@ class DictionaryController extends Controller
 
         @date_default_timezone_set("Asia/Ho_Chi_Minh");
         $itemPush = Dictionary::find();
+        $itemPush->where(['user_id'=>1]);
         $time = $itemPush->min('send_time');
         $itemPush = Dictionary::find();
-        $itemPush->where(['send_time'=>$time]);
+        $itemPush->where(['user_id'=>1]);
+        $itemPush->andWhere(['send_time'=>$time]);
         $itemPush= $itemPush->one();
         $itemPush->send_time = date('Y-m-d H:i:s');
         $itemPush->save(false);
 
-        $key = 'DieLoop_'.$itemPush->word;
-        $flag = Cache::get($key);
-        if(!empty($flag)){
-            echo '$key:  '.$key.PHP_EOL;
-            exit();
-        }
-        Cache::set($key,1,60*2);
+//        $key = 'DieLoop_'.$itemPush->word;
+//        $flag = Cache::get($key);
+//        if(!empty($flag)){
+//            echo '$key:  '.$key.PHP_EOL;
+//            exit();
+//        }
+//        Cache::set($key,1,60*2);
 
         $header = [
             'Authorization'=>'key=AAAAMBCf86I:APA91bGgsx3CsPm0XiWszzMaGRuj4xuPtQHkN3iqykOFYEuSXXtH6JjM-69mvNEYC6lvdJk7TEkrSLkgHpDt6Gvx7dmfdEvjJW9G2xiI-80mnuPBddl0wW0eKCN_v1gW4TsSe7mDPqWj',
@@ -64,25 +66,42 @@ class DictionaryController extends Controller
             ->send();
 
 
-        $data = [
-            'notification'=>[
-                "title"=> $itemPush->word." -- ".$itemPush->pronunciation,
-                "body"=> $itemPush->mean.' -- '.$itemPush->sentence,
-                "icon"=> $itemPush->image,
-                "click_action"=> !empty($itemPush->link)?$itemPush->link:''
-            ],
-            'to'=>$tohanh
-        ];
-        $url = 'https://fcm.googleapis.com/fcm/send';
+        $itemPush = Dictionary::find();
+        $itemPush->where(['user_id'=>2]);
+        $time = $itemPush->min('send_time');
+        $itemPush = Dictionary::find();
+        $itemPush->where(['send_time'=>$time]);
+        $itemPush->andWhere(['user_id'=>2]);
+        $itemPush= $itemPush->one();
+        $itemPush->send_time = date('Y-m-d H:i:s');
+        $itemPush->save(false);
 
-        $client = new Client();
-        $response = $client->createRequest()
-            ->setFormat(Client::FORMAT_JSON)
-            ->setMethod('POST')
-            ->setUrl($url)
-            ->setHeaders($header)
-            ->setData($data)
-            ->send();
+
+
+        if(!empty($itemPush)){
+            echo $itemPush->word.PHP_EOL;
+            $data = [
+                'notification'=>[
+                    "title"=> $itemPush->word." -- ".$itemPush->pronunciation,
+                    "body"=> $itemPush->mean.' -- '.$itemPush->sentence,
+                    "icon"=> $itemPush->image,
+                    "click_action"=> !empty($itemPush->link)?$itemPush->link:''
+                ],
+                'to'=>$tohanh
+            ];
+            $url = 'https://fcm.googleapis.com/fcm/send';
+
+            $client = new Client();
+            $response = $client->createRequest()
+                ->setFormat(Client::FORMAT_JSON)
+                ->setMethod('POST')
+                ->setUrl($url)
+                ->setHeaders($header)
+                ->setData($data)
+                ->send();
+        }
+
+
 
         print_r($response->getData());
 

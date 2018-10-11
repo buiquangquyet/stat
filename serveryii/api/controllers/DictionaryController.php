@@ -35,7 +35,11 @@ class DictionaryController extends Controller
      */
     public function actionIndex()
     {
+        if(!empty(Yii::$app->getUser()->getId())){
+            $uer_id = Yii::$app->getUser()->getId();
+        }
         $searchModel = new DictionaryRewrite();
+        $searchModel->user_id = $uer_id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -66,7 +70,6 @@ class DictionaryController extends Controller
     {
         @date_default_timezone_set("Asia/Ho_Chi_Minh");
         $model = new Dictionary();
-        $uer_id = 2;
         if(!empty(Yii::$app->getUser()->getId())){
             $uer_id = Yii::$app->getUser()->getId();
         }

@@ -64,7 +64,6 @@ class DictionaryRewrite extends Dictionary
             'send_time' => $this->send_time,
             'user_id' => $this->user_id,
         ]);
-
         $query->andFilterWhere(['like', 'word', $this->word])
             ->andFilterWhere(['like', 'pronunciation', $this->pronunciation])
             ->andFilterWhere(['like', 'mean', $this->mean])
