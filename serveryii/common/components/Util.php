@@ -9,47 +9,29 @@
 namespace common\components;
 
 
-use common\models\model\Store;
 use DOMDocument;
-//use linslin\yii2\curl\Curl;
-use yii\base\InvalidConfigException;
-use yii\web\Request;
-use yii\web\UrlRule;
-use yii\web\UrlRuleInterface;
-use linslin\yii2\curl;
+use Imagick;
 
 class Util
 {
+    function Thumbnail($url, $filename, $width = 150, $height = true) {
 
-    function Curl_Get($url, $header = [], $param = [])
-    {
-        $curl = new curl\Curl();
-        if (!empty($header)) {
-            $curl->setHeaders($header);
-        }
-        if (!empty($param)) {
-            $curl->setGetParams($param);
-        }
-        $response = $curl->get($url);
-        return $response;
-    }
+        // download and create gd image
+        $image = ImageCreateFromString(file_get_contents($url));
 
-    function Curl_Post($url, $header = [], $param = [],$time=null)
-    {
-        $curl = new curl\Curl();
-        if (!empty($header)) {
-            $curl->setHeaders($header);
-        }
-        if (!empty($param)) {
-            $curl->setPostParams($param);
-        }
-        if(!empty($time)){
-            $curl->setOption(13, $time);
-        }
+        // calculate resized ratio
+        // Note: if $height is set to TRUE then we automatically calculate the height based on the ratio
+        $height = $height === true ? (ImageSY($image) * $width / ImageSX($image)) : $height;
 
+        // create image
+        $output = ImageCreateTrueColor($width, $height);
+        ImageCopyResampled($output, $image, 0, 0, 0, 0, $width, $height, ImageSX($image), ImageSY($image));
 
-        $response = $curl->post($url);
-        return $response;
+        // save image
+        ImageJPEG($output, $filename, 95);
+
+        // return resized image
+        return $output; // if you need to use it
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace api\controllers;
 
+use common\components\Util;
 use Yii;
 use common\models\mysql\db\Dictionary;
 use common\models\mysql\modeldb\DictionaryRewrite;
@@ -74,6 +75,7 @@ class DictionaryController extends Controller
         if(!empty(Yii::$app->getUser()->getId())){
             $uer_id = Yii::$app->getUser()->getId();
         }
+        $prefix = time();
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -81,10 +83,13 @@ class DictionaryController extends Controller
             $model->send_time = date('Y-m-d H:i:s');
             $model->user_id =$uer_id;
 
+            $model->image = UploadedFile::getInstance($model, 'image');
             if ($model->image) {
-                $model->image->saveAs('uploads/' .time(). $model->image->baseName . '.' . $model->image->extension);
-                echo $model->image;
-                die();
+                $model->image->saveAs('uploads/' .$prefix. $model->image->baseName . '.' . $model->image->extension);
+                $name = $prefix. $model->image->baseName . '.' . $model->image->extension;
+                $model->image = '/uploads/'.$name;
+                Util::Thumbnail('http://apistat.beta.vn/'.$model->image, __DIR__."/../web/uploads/".$name);
+                $model->save();
             }
 
             $model->save(false);
@@ -108,11 +113,14 @@ class DictionaryController extends Controller
     {
         $model = $this->findModel($id);
         $prefix = time();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->image = UploadedFile::getInstance($model, 'image');
             if ($model->image) {
                 $model->image->saveAs('uploads/' .$prefix. $model->image->baseName . '.' . $model->image->extension);
-                $model->image = '/uploads/'.$prefix. $model->image->baseName . '.' . $model->image->extension;
+                $name = $prefix. $model->image->baseName . '.' . $model->image->extension;
+                $model->image = '/uploads/'.$name;
+                Util::Thumbnail('http://apistat.beta.vn/'.$model->image, __DIR__."/../web/uploads/".$name);
                 $model->save();
             }
             return $this->redirect(['view', 'id' => $model->id]);
