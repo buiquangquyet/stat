@@ -21,6 +21,7 @@ use yii\widgets\ActiveForm;
     <?php //echo $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'image')->fileInput() ?>
+    <?php //echo $form->field($model, 'image')->textInput(['maxlength' => true])->hiddenInput()->label(false) ?>
 
     <?= $form->field($model, 'sentence')->textarea(['rows' => 6]) ?>
 

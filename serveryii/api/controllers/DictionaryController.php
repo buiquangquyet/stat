@@ -78,11 +78,10 @@ class DictionaryController extends Controller
         $prefix = time();
 
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
             $model->creat_time = date('Y-m-d H:i:s');
             $model->send_time = date('Y-m-d H:i:s');
             $model->user_id =$uer_id;
-
             $model->image = UploadedFile::getInstance($model, 'image');
             if ($model->image) {
                 $model->image->saveAs('uploads/' .$prefix. $model->image->baseName . '.' . $model->image->extension);
@@ -91,8 +90,8 @@ class DictionaryController extends Controller
                 Util::Thumbnail('http://apistat.beta.vn/'.$model->image, __DIR__."/../web/uploads/".$name);
                 $model->save();
             }
+            $model->save();
 
-            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -113,6 +112,7 @@ class DictionaryController extends Controller
     {
         $model = $this->findModel($id);
         $prefix = time();
+        $old_image = $model->image;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->image = UploadedFile::getInstance($model, 'image');
@@ -121,8 +121,11 @@ class DictionaryController extends Controller
                 $name = $prefix. $model->image->baseName . '.' . $model->image->extension;
                 $model->image = '/uploads/'.$name;
                 Util::Thumbnail('http://apistat.beta.vn/'.$model->image, __DIR__."/../web/uploads/".$name);
-                $model->save();
             }
+            if($model->image ==''){
+                $model->image = $old_image;
+            }
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
