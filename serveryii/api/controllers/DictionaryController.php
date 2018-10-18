@@ -8,6 +8,7 @@ use common\models\mysql\modeldb\DictionaryRewrite;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * DictionaryController implements the CRUD actions for Dictionary model.
@@ -79,6 +80,13 @@ class DictionaryController extends Controller
             $model->creat_time = date('Y-m-d H:i:s');
             $model->send_time = date('Y-m-d H:i:s');
             $model->user_id =$uer_id;
+
+            if ($model->image) {
+                $model->image->saveAs('uploads/' .time(). $model->image->baseName . '.' . $model->image->extension);
+                echo $model->image;
+                die();
+            }
+
             $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -99,8 +107,14 @@ class DictionaryController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $prefix = time();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if ($model->image) {
+                $model->image->saveAs('uploads/' .$prefix. $model->image->baseName . '.' . $model->image->extension);
+                $model->image = '/uploads/'.$prefix. $model->image->baseName . '.' . $model->image->extension;
+                $model->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

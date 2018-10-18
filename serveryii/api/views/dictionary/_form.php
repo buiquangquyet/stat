@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="dictionary-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'word')->textInput(['maxlength' => true]) ?>
 
@@ -18,15 +18,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'mean')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <?php //echo $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+
+    <?php echo $form->field($model, 'image')->fileInput() ?>
 
     <?= $form->field($model, 'sentence')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'creat_time')->textInput() ?>
+    <?php // echo $form->field($model, 'creat_time')->textInput() ?>
 
-    <?= $form->field($model, 'send_time')->textInput() ?>
+    <?php // echo $form->field($model, 'send_time')->textInput() ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?php // echo $form->field($model, 'user_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

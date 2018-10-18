@@ -9,6 +9,7 @@
 namespace console\controllers;
 use common\components\Cache;
 use common\models\mysql\db\Dictionary;
+use Yii;
 use yii\console\Controller;
 use yii\httpclient\Client;
 
@@ -20,7 +21,7 @@ class DictionaryController extends Controller
         @date_default_timezone_set("Asia/Ho_Chi_Minh");
         $date = date('Y-m-d H:i:s');
         $date1 = str_replace('-', '/', $date);
-        $after = date('Y-m-d H:i:s',strtotime($date1 . "-4 days"));
+        $after = date('Y-m-d H:i:s',strtotime($date1 . "-2 days"));
         $itemPush = Dictionary::find();
         $itemPush->where(['user_id'=>1]);
         $itemPush->andWhere(['>=','creat_time',$after]);
@@ -29,12 +30,19 @@ class DictionaryController extends Controller
         $itemPush->where(['user_id'=>1]);
         $itemPush->andWhere(['send_time'=>$time]);
         $itemPush= $itemPush->one();
-        $itemPush->send_time = date('Y-m-d H:i:s');
-        echo 'creat_time: '.$itemPush->creat_time.'  --  '.'send_time: '.$itemPush->send_time.PHP_EOL;
-        $itemPush->save(false);
+
+
+        $itemPush1 = Dictionary::findOne($itemPush->id);
+        $itemPush1->send_time = date('Y-m-d H:i:s');
+        echo 'start creat_time: '.$itemPush1->creat_time.'  --  '.'send_time: '.$itemPush1->send_time.PHP_EOL;
+        $itemPush1->save(false);
+        echo 'finish creat_time: '.$itemPush1->creat_time.'  --  '.'send_time: '.$itemPush1->send_time.PHP_EOL;
+        
         $quyet = [
-            'dsiu0-JdTUw:APA91bGbVzePtfoW5r3lkYc0n1UoZcVhGTzQi237URyUeqrjQzGpDi4e7ZGWo91lZByULoV0X1jMQWlTo67B144OT9TZ-HYjPcBqIXwtyl-L16XocSjFFd_XdkBVjOuHJCIAP_Src48-',
-            'ctxIFA3uS-k:APA91bE8eHpuC8ZKUSAcsem-kKvKXRaYzVBLh8PHRE3fyL0Rl4qO_x3zRpxKeEh4rmZwqmVxOSxAF9TZZbTNKT8cRRqVDDA3XsR5gM6_i7F4xvvBkSjgwncmp0CLxmXizTzUR0Mqu9lC'
+            //'dsiu0-JdTUw:APA91bGbVzePtfoW5r3lkYc0n1UoZcVhGTzQi237URyUeqrjQzGpDi4e7ZGWo91lZByULoV0X1jMQWlTo67B144OT9TZ-HYjPcBqIXwtyl-L16XocSjFFd_XdkBVjOuHJCIAP_Src48-',
+            //'ctxIFA3uS-k:APA91bE8eHpuC8ZKUSAcsem-kKvKXRaYzVBLh8PHRE3fyL0Rl4qO_x3zRpxKeEh4rmZwqmVxOSxAF9TZZbTNKT8cRRqVDDA3XsR5gM6_i7F4xvvBkSjgwncmp0CLxmXizTzUR0Mqu9lC',
+            'eyAT9VAuYGc:APA91bFIlU4ifu-RDLVwOoezqCiaRKIc-RBv2qRRBxJ7RMgvWoBXX7NkFrQszSHyxOjaMIha4aS2j_vKW01fGA9Kp3BrkjnLQSPYcq3PR0vPb4ZcuhlymYbdlU_eMJMtZGmTP-az_TYi',
+            'dRi1cg0QDbM:APA91bFtdbVhy7pv6csDA5F2oGskeOL4CSHIZJdZeKzNzCUKUOH1rTOAYObZwPtp4dHyKsps7NGS9rLMSxbsfVEiSad6TD68lhwIIAHp-M1vLORt6nEZDFMh-mJSR9S8-TVcfvt-F8fk',
         ];
         $tohanh = 'eWs2KuSvGYU:APA91bFMzwXi3THFYD4gkQ0YgV-Y59yGGbqL1t73RdYGY-zvebfTZp2Xi1t138Dwekvd_3nUpRNjcT0-HH3_M2emseqdHxO9T5sZk8atZP4UIJAR6HIQwZYPFijxwbIryGan7ADbYD3h';
 
@@ -45,12 +53,14 @@ class DictionaryController extends Controller
             ];
 
             echo 'creat_time: '.$itemPush->creat_time.'  --  '.'send_time: '.$itemPush->send_time.PHP_EOL;
+            $image = 'http://'.Yii::$app->params['domain_api'].$itemPush->image;
+            echo $image.PHP_EOL;
             $data = [
                 'notification'=>[
-                    "title"=> $itemPush->word." -- ".$itemPush->pronunciation,
-                    "body"=> $itemPush->mean.' -- '.$itemPush->sentence,
-                    "icon"=> $itemPush->image,
-                    "click_action"=> !empty($itemPush->link)?$itemPush->link:''
+                    "title"=> !empty($itemPush->word)?$itemPush->word:'',
+                    "body"=> !empty($itemPush->mean)?$itemPush->mean:''.' -- '.!empty($itemPush->sentence)?$itemPush->sentence:'',
+                    "icon"=> !empty($itemPush->image)?$image:'https://www.freeiconspng.com/uploads/no-image-icon-4.png',
+                    "click_action"=> !empty($itemPush->link)?$itemPush->image:''
                 ],
                 'to'=>$value
             ];
@@ -67,6 +77,7 @@ class DictionaryController extends Controller
                 ->setHeaders($header)
                 ->setData($data)
                 ->send();
+            print_r($response->getData());
         }
 
 
