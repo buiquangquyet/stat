@@ -58,7 +58,7 @@ class DictionaryController extends Controller
             $data = [
                 'notification'=>[
                     "title"=> !empty($itemPush->word)?$itemPush->word:'',
-                    "body"=> !empty($itemPush->mean)?$itemPush->mean:''.' -- '.!empty($itemPush->sentence)?$itemPush->sentence:'',
+                    "body"=> !empty($itemPush->pronunciation)?$itemPush->pronunciation:''.'--'.!empty($itemPush->mean)?$itemPush->mean:''.' -- '.!empty($itemPush->sentence)?$itemPush->sentence:'',
                     "icon"=> !empty($itemPush->image)?$image:'https://www.freeiconspng.com/uploads/no-image-icon-4.png',
                     "click_action"=> !empty($itemPush->link)?$itemPush->image:''
                 ],
