@@ -87,6 +87,9 @@ AppAsset::register($this);
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-71745173-2', 'auto');
+    ga('create', 'UA-71745173-2', 'auto', 'myTracker', {
+        userId: '12345'
+    });
     ga('send', 'pageview');
 </script>
 
