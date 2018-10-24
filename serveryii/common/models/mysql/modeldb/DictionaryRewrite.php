@@ -69,6 +69,7 @@ class DictionaryRewrite extends Dictionary
             ->andFilterWhere(['like', 'mean', $this->mean])
             ->andFilterWhere(['like', 'image', $this->image])
             ->andFilterWhere(['like', 'sentence', $this->sentence]);
+        $query->orderBy(['id' => SORT_DESC]);
 
         return $dataProvider;
     }

@@ -85,12 +85,50 @@ AppAsset::register($this);
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    //ga('create', 'UA-71745173-2', 'auto', 'startup_main');
+    //ga('create', 'UA-71745173-2', 'auto');
+
     ga('create', 'UA-71745173-2', 'auto', 'myTracker', {
-        userId: '12345'
+        userId: '12345',
     });
+
+    ga('myTracker.set', 'page', '/site');
+    ga('myTracker.set', 'language', 'vi');
+
+//    ga(function() {
+//        // Logs the "myTracker" tracker object to the console.
+//        console.log(ga.getAll());
+//    });
+
+//    ga('set', {
+//        page: '/about',
+//        title: 'About Us'
+//    });
+//
+//    ga('myTracker.set', 'page', '/about');
+
+//    ga(function(tracker) {
+//        tracker.set('page', '/about');
+//    });
+
+    ga(function() {
+        console.log(ga.getAll());
+
+    });
+
+//    ga(function(tracker) {
+//        // Logs the trackers name.
+//        // (Note: default trackers are given the name "t0")
+//        console.log(tracker.get('name'));
+//
+//        // Logs the client ID for the current user.
+//        console.log(tracker.get('clientId'));
+//
+//        // Logs the URL of the referring site (if available).
+//        console.log(tracker.get('referrer'));
+//    });
+
     ga('myTracker.send', 'pageview');
-    ga('send', 'pageview');
+    //ga('send', 'pageview');
 </script>
 
 </body>
