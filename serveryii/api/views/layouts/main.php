@@ -24,6 +24,24 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics_debug.js','ga');
+
+    ga('create', 'UA-71745173-2', 'auto');
+    ga('create', 'UA-71745173-2', 'auto', 'myTracker', {
+        userId: '12345'
+    });
+
+    ga('set', 'vp', '1600x400');
+
+    if (location.hostname == 'localhost') {
+        ga('set', 'sendHitTask', null);
+    }
+
+</script>
 <?php $this->beginBody() ?>
 
 <div class="wrap">
@@ -40,6 +58,7 @@ AppAsset::register($this);
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => 'Dictionary', 'url' => ['/dictionary']],
+        ['label' => 'News', 'url' => ['/news']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
@@ -81,15 +100,6 @@ AppAsset::register($this);
 <?php $this->endBody() ?>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-71745173-2', 'auto');
-    ga('create', 'UA-71745173-2', 'auto', 'myTracker', {
-        userId: '12345'
-    });
     ga('send', 'pageview');
 </script>
 

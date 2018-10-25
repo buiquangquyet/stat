@@ -24,6 +24,18 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    //ga('create', 'UA-71745173-2', 'auto');
+
+    ga('create', 'UA-71745173-2', 'auto', 'myTracker', {
+        userId: '12345',
+    });
+</script>
 <?php $this->beginBody() ?>
 
 <div class="wrap">
@@ -80,19 +92,19 @@ AppAsset::register($this);
 <?php $this->endBody() ?>
 
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    //ga('create', 'UA-71745173-2', 'auto');
-
-    ga('create', 'UA-71745173-2', 'auto', 'myTracker', {
-        userId: '12345',
-    });
-
-    ga('myTracker.set', 'page', '/site');
-    ga('myTracker.set', 'language', 'vi');
+//    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+//            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+//        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+//    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+//
+//    //ga('create', 'UA-71745173-2', 'auto');
+//
+//    ga('create', 'UA-71745173-2', 'auto', 'myTracker', {
+//        userId: '12345',
+//    });
+//
+//    ga('myTracker.set', 'page', '/site');
+//    ga('myTracker.set', 'language', 'vi');
 
 //    ga(function() {
 //        // Logs the "myTracker" tracker object to the console.
@@ -110,10 +122,10 @@ AppAsset::register($this);
 //        tracker.set('page', '/about');
 //    });
 
-    ga(function() {
-        console.log(ga.getAll());
-
-    });
+//    ga(function() {
+//        console.log(ga.getAll());
+//
+//    });
 
 //    ga(function(tracker) {
 //        // Logs the trackers name.
