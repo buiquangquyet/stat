@@ -25,6 +25,7 @@ class DictionaryController extends Controller
         $listToken['dRi1cg0QDbM:APA91bFtdbVhy7pv6csDA5F2oGskeOL4CSHIZJdZeKzNzCUKUOH1rTOAYObZwPtp4dHyKsps7NGS9rLMSxbsfVEiSad6TD68lhwIIAHp-M1vLORt6nEZDFMh-mJSR9S8-TVcfvt-F8fk']=1;// quyet
         $listToken['eWs2KuSvGYU:APA91bFMzwXi3THFYD4gkQ0YgV-Y59yGGbqL1t73RdYGY-zvebfTZp2Xi1t138Dwekvd_3nUpRNjcT0-HH3_M2emseqdHxO9T5sZk8atZP4UIJAR6HIQwZYPFijxwbIryGan7ADbYD3h']=2;// hanh
         $listToken['fkDn0cpBSWA:APA91bHsXVgX3bvr429D7uABqNw4ndKvpAItnxHHL78p2Rdw6c9SaFkFnQPgxVC0aegcemKt09YnZ9VHEMB3yadVQPBhDnstKQcl3IAYloZn6zviOvQj9cxWCb7QM28EZIRFB-omAveR']=3;// thuy
+        $listToken['c58Me2mi0LI:APA91bHOOKVqKeJwF0Pf4DAjSI4f8nph9t95Sap-_KW7R2xUf4uHCr6JypGC-w8SmDXTfInMHwdSVQm8CALoFbh3k9kwfZ71alDJou82NOb9foBrrWnjRy33jq8TpPnqaiRIsRonACmE-omAveR']=3;// thuy
         //$listToken['cL7n3RcrOmw:APA91bGGt51RHfSKyljzFp87nvjEe8vNiixlX1hqoT1beKZ4uf9rc1B307nCC7gn_nuMO8S-_lozXD80V94b8pMNiFWibPQkMruYzEXN7ONw2pNLtepaIpY4H0ZUEDhKuPNMjpZtOrSH']=3;// thuy
 
 
@@ -32,7 +33,7 @@ class DictionaryController extends Controller
             @date_default_timezone_set("Asia/Ho_Chi_Minh");
             $date = date('Y-m-d H:i:s');
             $date1 = str_replace('-', '/', $date);
-            $after = date('Y-m-d H:i:s',strtotime($date1 . "-5 days"));
+            $after = date('Y-m-d H:i:s',strtotime($date1 . "-10 days"));
             $itemPush = Dictionary::find();
             $itemPush->where(['user_id'=>$key]);
             $itemPush->andWhere(['>=','creat_time',$after]);
@@ -42,9 +43,13 @@ class DictionaryController extends Controller
             $itemPush->andWhere(['send_time'=>$time]);
             $itemPush= $itemPush->one();
 
+            $itemPush->send_time = date('Y-m-d H:i:s');
+            $itemPush->save(false);
+
 
             if(!empty($itemPush)){
                 echo $itemPush->word.PHP_EOL;
+                echo '$key'.$key.PHP_EOL;
                 $data = [
                     'notification'=>[
                         "title"=> $itemPush->word." -- ".$itemPush->pronunciation,

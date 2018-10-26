@@ -2,6 +2,7 @@
 
 namespace common\models\mysql\modeldb;
 
+use common\components\Cache;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -80,5 +81,24 @@ class NewsRewrite extends News
             ->andFilterWhere(['like', 'updateEmail', $this->updateEmail]);
 
         return $dataProvider;
+    }
+
+    /**
+     * @param bool  $insert
+     * @param array $changedAttributes
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+        $this->id;
+        $arrayKey [] = 'CACHE_VIEW_NEWS_';
+        if (!empty($arrayKey)) {
+            foreach ($arrayKey as $key) {
+                Cache::delete($key . $this->id);
+                Cache::delete($key);
+            }
+        }
+
+
     }
 }

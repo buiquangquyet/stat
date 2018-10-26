@@ -40,7 +40,7 @@ class Cache
 
     public static function buildKey($key)
     {
-        return base64_encode($key);
+        return ($key);
         //return Yii::$app->cache->buildKey($key);
     }
 }

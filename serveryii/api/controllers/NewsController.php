@@ -118,7 +118,7 @@ class NewsController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = News::findOne($id)) !== null) {
+        if (($model = NewsRewrite::findOne($id)) !== null) {
             return $model;
         }
 
