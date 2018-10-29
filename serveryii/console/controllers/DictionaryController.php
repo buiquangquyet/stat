@@ -33,7 +33,7 @@ class DictionaryController extends Controller
             @date_default_timezone_set("Asia/Ho_Chi_Minh");
             $date = date('Y-m-d H:i:s');
             $date1 = str_replace('-', '/', $date);
-            $after = date('Y-m-d H:i:s',strtotime($date1 . "-10 days"));
+            $after = date('Y-m-d H:i:s',strtotime($date1 . "-2 days"));
             $itemPush = Dictionary::find();
             $itemPush->where(['user_id'=>$key]);
             $itemPush->andWhere(['>=','creat_time',$after]);

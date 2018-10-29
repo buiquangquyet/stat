@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use dosamigos\ckeditor\CKEditor;
 /* @var $this yii\web\View */
 /* @var $model common\models\mysql\db\Dictionary */
 /* @var $form yii\widgets\ActiveForm */
@@ -23,7 +23,10 @@ use yii\widgets\ActiveForm;
     <?php echo $form->field($model, 'image')->fileInput() ?>
     <?php //echo $form->field($model, 'image')->textInput(['maxlength' => true])->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'sentence')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'sentence')->widget(CKEditor::className(), [
+        'options' => ['rows' => 10],
+        'preset' => 'full'
+    ]) ?>
 
     <?php // echo $form->field($model, 'creat_time')->textInput() ?>
 
