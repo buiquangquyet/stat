@@ -9,6 +9,7 @@
 namespace console\controllers;
 use common\components\Cache;
 use common\models\mysql\db\Dictionary;
+use common\models\mysql\modeldb\User;
 use Yii;
 use yii\console\Controller;
 use yii\httpclient\Client;
@@ -26,11 +27,14 @@ class DictionaryController extends Controller
         $listToken['eWs2KuSvGYU:APA91bFMzwXi3THFYD4gkQ0YgV-Y59yGGbqL1t73RdYGY-zvebfTZp2Xi1t138Dwekvd_3nUpRNjcT0-HH3_M2emseqdHxO9T5sZk8atZP4UIJAR6HIQwZYPFijxwbIryGan7ADbYD3h']=2;// hanh
         $listToken['fkDn0cpBSWA:APA91bHsXVgX3bvr429D7uABqNw4ndKvpAItnxHHL78p2Rdw6c9SaFkFnQPgxVC0aegcemKt09YnZ9VHEMB3yadVQPBhDnstKQcl3IAYloZn6zviOvQj9cxWCb7QM28EZIRFB-omAveR']=3;// thuy
         $listToken['c58Me2mi0LI:APA91bHOOKVqKeJwF0Pf4DAjSI4f8nph9t95Sap-_KW7R2xUf4uHCr6JypGC-w8SmDXTfInMHwdSVQm8CALoFbh3k9kwfZ71alDJou82NOb9foBrrWnjRy33jq8TpPnqaiRIsRonACmE-omAveR']=3;// thuy
-        //$listToken['cL7n3RcrOmw:APA91bGGt51RHfSKyljzFp87nvjEe8vNiixlX1hqoT1beKZ4uf9rc1B307nCC7gn_nuMO8S-_lozXD80V94b8pMNiFWibPQkMruYzEXN7ONw2pNLtepaIpY4H0ZUEDhKuPNMjpZtOrSH']=3;// thuy
+        $listToken['cL7n3RcrOmw:APA91bGGt51RHfSKyljzFp87nvjEe8vNiixlX1hqoT1beKZ4uf9rc1B307nCC7gn_nuMO8S-_lozXD80V94b8pMNiFWibPQkMruYzEXN7ONw2pNLtepaIpY4H0ZUEDhKuPNMjpZtOrSH']=3;// thuy
 
 
         foreach ($listToken as $value=>$key){
             @date_default_timezone_set("Asia/Ho_Chi_Minh");
+            $userName = User::GetNameById($key);
+
+
             $date = date('Y-m-d H:i:s');
             $date1 = str_replace('-', '/', $date);
             $after = date('Y-m-d H:i:s',strtotime($date1 . "-2 days"));
@@ -42,7 +46,10 @@ class DictionaryController extends Controller
             $itemPush->where(['user_id'=>$key]);
             $itemPush->andWhere(['send_time'=>$time]);
             $itemPush= $itemPush->one();
-
+            if(empty($itemPush)){
+                break;
+            }
+            echo '$userName: '.$userName.PHP_EOL;
             $itemPush->send_time = date('Y-m-d H:i:s');
             $itemPush->save(false);
 
@@ -52,7 +59,7 @@ class DictionaryController extends Controller
                 echo '$key'.$key.PHP_EOL;
                 $data = [
                     'notification'=>[
-                        "title"=> $itemPush->word." -- ".$itemPush->pronunciation,
+                        "title"=> $itemPush->word,
                         "body"=> $itemPush->mean.' -- '.$itemPush->sentence,
                         "icon"=> $itemPush->image,
                         "click_action"=> !empty($itemPush->link)?$itemPush->link:''
@@ -70,6 +77,7 @@ class DictionaryController extends Controller
                     ->setData($data)
                     ->send();
                 print_r($response->getData());
+                echo '------------------------'.PHP_EOL;
             }
         }
 
