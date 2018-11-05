@@ -19,10 +19,6 @@ class NewsController extends \yii\web\Controller
                 'variations' => [
                     \Yii::$app->language,
                 ],
-                'dependency' => [
-                    'class' => 'yii\caching\DbDependency',
-                    'sql' => 'SELECT COUNT(*) FROM post',
-                ],
             ],
         ];
     }

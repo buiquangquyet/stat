@@ -79,6 +79,7 @@ class NewsRewrite extends News
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'createEmail', $this->createEmail])
             ->andFilterWhere(['like', 'updateEmail', $this->updateEmail]);
+        $query->orderBy(['id' => SORT_DESC]);
 
         return $dataProvider;
     }
