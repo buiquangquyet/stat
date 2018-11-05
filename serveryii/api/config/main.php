@@ -14,6 +14,9 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -43,6 +46,7 @@ return [
             'enableStrictParsing' => false,
             'suffix' => '',
             'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
             ],
         ],
     ],

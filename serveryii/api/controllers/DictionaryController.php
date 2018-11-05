@@ -143,9 +143,9 @@ class DictionaryController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+//        $this->findModel($id)->delete();
+//
+//        return $this->redirect(['index']);
     }
 
     /**
