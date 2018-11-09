@@ -5,6 +5,8 @@
  * Date: 09/11/2018
  * Time: 11:43
  */
+use common\components\TextUtility;
+
 ?>
 <div id="page-header">
     <div class="container clearfix">
@@ -36,7 +38,7 @@
                             <div class="col-md-8 d-flex flex-column align-items-start">
                                 <p class="text-muted text-uppercase text-xs mb-0"><span class="text-primary">Womens</span> / shoes</p>
                                 <h4 class="card-title mb-2">
-                                    <a href="shop-product.html" class="text-grey-dark"><?=$value->name?></a>
+                                    <a href="/lession/<?=TextUtility::alias($value->name)?>-<?=$value->id?>.html" class="text-grey-dark"><?=$value->name?></a>
                                 </h4>
 
                                 <p class="pos-md-absolute pos-t pos-r mr-3 text-md-right">

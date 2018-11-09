@@ -2,12 +2,14 @@
 
 namespace frontend\controllers;
 
-class LessionController extends \yii\web\Controller
+use common\models\mysql\modeldb\Lession;
+
+class LessionController extends BaseController
 {
     public function actionIndex($id)
     {
-        
-        return $this->render('index');
+        $lession = Lession::GetById($id);
+        return $this->render('index',['lession'=>$lession]);
     }
 
 }
