@@ -10,30 +10,50 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div id="home" class="hero-area">
 
-    <p>Please fill out the following fields to login:</p>
-
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div style="color:#999;margin:1em 0">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
+    <!-- Backgound Image -->
+    <div class="bg-image bg-parallax overlay" style="background-image:url(/edusite/img/home-background.jpg)"></div>
+    <!-- /Backgound Image -->
+    <div class="home-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 title-top-banner">
+                    <h1 class="white-text">Edusite Free Online Training Courses</h1>
+                    <p class="lead white-text">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant, eu pro alii error homero.</p>
+                    <a class="main-button icon-button" href="#">Get Started!</a>
                 </div>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                <div class="col-md-3 login-sec">
+                    <h2 class="text-center white-text">Login Now</h2>
+                    <form class="login-form" method="post" action="/site/login">
+                        <input id="form-token" type="hidden" name="<?=Yii::$app->request->csrfParam?>" value="<?=Yii::$app->request->csrfToken?>"/>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="text-uppercase white-text">Username</label>
+                            <input type="text" name="LoginForm[username]" class="form-control" placeholder="">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="text-uppercase white-text">Password</label>
+                            <input type="password" name="LoginForm[password]" class="form-control" placeholder="">
+                        </div>
+
+
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input">
+                                <small class="white-text">Remember Me</small>
+                            </label>
+                            <button type="submit" class="btn btn-login float-right white-text">Submit</button>
+                        </div>
+
+                    </form>
+                    <div class="copy-text white-text">Created with <i class="fa fa-heart"></i> by <a href="http://grafreez.com">Grafreez.com</a></div>
                 </div>
 
-            <?php ActiveForm::end(); ?>
+            </div>
         </div>
     </div>
+
+
 </div>

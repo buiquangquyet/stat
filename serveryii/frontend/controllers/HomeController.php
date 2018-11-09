@@ -9,7 +9,7 @@
 namespace frontend\controllers;
 
 use yii\web\Controller;
-class HomeController extends Controller
+class HomeController extends BaseController
 {
 
     public function actionIndex(){

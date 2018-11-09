@@ -96,7 +96,7 @@ class NewsRewrite extends News
         if (!empty($arrayKey)) {
             foreach ($arrayKey as $key) {
                 Cache::delete($key . $this->id);
-                Cache::delete($key);
+                Cache::delete($key.'*');
             }
         }
 
