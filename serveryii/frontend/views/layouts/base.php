@@ -24,9 +24,13 @@ use common\widgets\Alert;
 
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="/edusite/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/edusite/css/theme-style.css"/>
+    <link type="text/css" rel="stylesheet" href="/edusite/css/theme-shop.css"/>
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="/edusite/css/style.css"/>
+
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,7 +65,7 @@ use common\widgets\Alert;
         <!-- Navigation -->
         <nav id="nav">
             <ul class="main-menu nav navbar-nav navbar-right">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/home/index">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Courses</a></li>
                 <li><a href="blog.html">Blog</a></li>

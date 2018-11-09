@@ -5,7 +5,7 @@ namespace common\models\mysql\modeldb;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\mysql\db\Course;
+use common\models\mysql\modeldb\Course;
 
 /**
  * CourseRewrite represents the model behind the search form of `common\models\mysql\db\Course`.

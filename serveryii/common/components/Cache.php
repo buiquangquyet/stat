@@ -13,7 +13,7 @@ use Yii;
 
 class Cache
 {
-    public static function set($keyword, $data, $duration = 60)
+    public static function set($keyword, $data, $duration = 60*60*24)
     {
         $keyword = self::buildKey($keyword);
         Yii::$app->cache->set($keyword, $data, $duration);

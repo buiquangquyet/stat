@@ -9,6 +9,12 @@ use Yii;
  *
  * @property int $id
  * @property string $name
+ * @property string $description
+ * @property string $image
+ * @property string $rate
+ * @property string $price
+ * @property string $created_time
+ * @property string $updated_time
  *
  * @property Lession[] $lessions
  */
@@ -28,7 +34,11 @@ class Course extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'string', 'max' => 255],
+            [['description'], 'string'],
+            [['rate'], 'number'],
+            [['created_time', 'updated_time'], 'safe'],
+            [['name', 'image'], 'string', 'max' => 255],
+            [['price'], 'string', 'max' => 10],
         ];
     }
 
@@ -40,6 +50,12 @@ class Course extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'description' => 'Description',
+            'image' => 'Image',
+            'rate' => 'Rate',
+            'price' => 'Price',
+            'created_time' => 'Created Time',
+            'updated_time' => 'Updated Time',
         ];
     }
 

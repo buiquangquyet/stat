@@ -41,6 +41,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'GET course/<name:[0-9a-zA-Z_-]+>-<id:\d+>.html' => 'course/index',
+                'GET lession/<name:[0-9a-zA-Z_-]+>-<id:\d+>.html' => 'lession/index',
             ],
         ],
 

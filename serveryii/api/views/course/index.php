@@ -1,34 +1,9 @@
 <?php
-
-use yii\helpers\Html;
-use yii\grid\GridView;
-
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\mysql\modeldb\CourseRewrite */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = 'Courses';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="course-index">
+<h1>course/index</h1>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Course', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'name',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-</div>
+<p>
+    You may change the content of this page by modifying
+    the file <code><?= __FILE__; ?></code>.
+</p>
