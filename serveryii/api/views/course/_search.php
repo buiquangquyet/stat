@@ -19,6 +19,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name') ?>
 
+    <?= $form->field($model, 'description') ?>
+
+    <?= $form->field($model, 'image') ?>
+
+    <?= $form->field($model, 'rate') ?>
+
+    <?php // echo $form->field($model, 'price') ?>
+
+    <?php // echo $form->field($model, 'created_time') ?>
+
+    <?php // echo $form->field($model, 'updated_time') ?>
+
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>

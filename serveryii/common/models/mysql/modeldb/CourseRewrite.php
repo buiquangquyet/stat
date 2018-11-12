@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use common\models\mysql\modeldb\Course;
 
 /**
- * CourseRewrite represents the model behind the search form of `common\models\mysql\db\Course`.
+ * CourseRewrite represents the model behind the search form of `common\models\mysql\modeldb\Course`.
  */
 class CourseRewrite extends Course
 {
@@ -19,8 +19,8 @@ class CourseRewrite extends Course
     {
         return [
             [['id'], 'integer'],
-            [['name'], 'safe'],
-            [['name'], 'unique'],
+            [['name', 'description', 'image', 'price', 'created_time', 'updated_time'], 'safe'],
+            [['rate'], 'number'],
         ];
     }
 
@@ -61,9 +61,15 @@ class CourseRewrite extends Course
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'rate' => $this->rate,
+            'created_time' => $this->created_time,
+            'updated_time' => $this->updated_time,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'image', $this->image])
+            ->andFilterWhere(['like', 'price', $this->price]);
 
         return $dataProvider;
     }

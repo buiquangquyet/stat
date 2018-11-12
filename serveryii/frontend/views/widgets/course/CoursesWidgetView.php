@@ -36,7 +36,7 @@ use common\components\TextUtility;
                         <div class="col-md-3 col-sm-6 col-xs-6">
                             <div class="course">
                                 <a href="/course/<?= TextUtility::alias($value->name)?>-<?=$value->id?>.html" class="course-img">
-                                    <img src="/edusite/img/course01.jpg" alt="">
+                                    <img src="<?=$value->image?>" alt="<?=$value->name?>">
                                     <i class="course-link-icon fa fa-link"></i>
                                 </a>
                                 <a class="course-title" href="/course/<?= TextUtility::alias($value->name)?>-<?=$value->id?>.html">
@@ -53,131 +53,10 @@ use common\components\TextUtility;
                     }
                 }
                 ?>
-                <!-- single course -->
-
-                <!-- /single course -->
-
-                <!-- single course -->
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="course">
-                        <a href="#" class="course-img">
-                            <img src="/edusite/img/course02.jpg" alt="">
-                            <i class="course-link-icon fa fa-link"></i>
-                        </a>
-                        <a class="course-title" href="#">Introduction to CSS </a>
-                        <div class="course-details">
-                            <span class="course-category">Web Design</span>
-                            <span class="course-price course-premium">Premium</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /single course -->
-
-                <!-- single course -->
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="course">
-                        <a href="#" class="course-img">
-                            <img src="/edusite/img/course03.jpg" alt="">
-                            <i class="course-link-icon fa fa-link"></i>
-                        </a>
-                        <a class="course-title" href="#">The Ultimate Drawing Course | From Beginner To Advanced</a>
-                        <div class="course-details">
-                            <span class="course-category">Drawing</span>
-                            <span class="course-price course-premium">Premium</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /single course -->
-
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="course">
-                        <a href="#" class="course-img">
-                            <img src="/edusite/img/course04.jpg" alt="">
-                            <i class="course-link-icon fa fa-link"></i>
-                        </a>
-                        <a class="course-title" href="#">The Complete Web Development Course</a>
-                        <div class="course-details">
-                            <span class="course-category">Web Development</span>
-                            <span class="course-price course-free">Free</span>
-                        </div>
-                    </div>
-                </div>
                 <!-- /single course -->
 
             </div>
             <!-- /row -->
-
-            <!-- row -->
-            <div class="row">
-
-                <!-- single course -->
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="course">
-                        <a href="#" class="course-img">
-                            <img src="/edusite/img/course05.jpg" alt="">
-                            <i class="course-link-icon fa fa-link"></i>
-                        </a>
-                        <a class="course-title" href="#">PHP Tips, Tricks, and Techniques</a>
-                        <div class="course-details">
-                            <span class="course-category">Web Development</span>
-                            <span class="course-price course-free">Free</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /single course -->
-
-                <!-- single course -->
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="course">
-                        <a href="#" class="course-img">
-                            <img src="/edusite/img/course06.jpg" alt="">
-                            <i class="course-link-icon fa fa-link"></i>
-                        </a>
-                        <a class="course-title" href="#">All You Need To Know About Web Design</a>
-                        <div class="course-details">
-                            <span class="course-category">Web Design</span>
-                            <span class="course-price course-free">Free</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /single course -->
-
-                <!-- single course -->
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="course">
-                        <a href="#" class="course-img">
-                            <img src="/edusite/img/course07.jpg" alt="">
-                            <i class="course-link-icon fa fa-link"></i>
-                        </a>
-                        <a class="course-title" href="#">How to Get Started in Photography</a>
-                        <div class="course-details">
-                            <span class="course-category">Photography</span>
-                            <span class="course-price course-free">Free</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /single course -->
-
-
-                <!-- single course -->
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="course">
-                        <a href="#" class="course-img">
-                            <img src="/edusite/img/course08.jpg" alt="">
-                            <i class="course-link-icon fa fa-link"></i>
-                        </a>
-                        <a class="course-title" href="#">Typography From A to Z</a>
-                        <div class="course-details">
-                            <span class="course-category">Typography</span>
-                            <span class="course-price course-free">Free</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /single course -->
-
-            </div>
-            <!-- /row -->
-
         </div>
         <!-- /courses -->
 
@@ -189,6 +68,5 @@ use common\components\TextUtility;
 
     </div>
     <!-- container -->
-
 </div>
 <!-- /Courses -->

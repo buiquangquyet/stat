@@ -2,12 +2,15 @@
 
 namespace api\controllers;
 
+use common\components\TextUtility;
+use common\components\Util;
 use Yii;
-use common\models\mysql\db\Course;
+use common\models\mysql\modeldb\Course;
 use common\models\mysql\modeldb\CourseRewrite;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CourseController implements the CRUD actions for Course model.
@@ -66,9 +69,26 @@ class CourseController extends Controller
     {
         $model = new Course();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        }
+
+        $prefix = time();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if ($model->image) {
+                $model->image->saveAs('uploads/course/' .$prefix. TextUtility::alias($model->image->baseName) . '.' . $model->image->extension);
+                $name = $prefix. TextUtility::alias($model->image->baseName) . '.' . $model->image->extension;
+                $model->image = 'http://apistat.beta.vn/uploads/course/'.$name;
+                //Util::Thumbnail('http://apistat.beta.vn/'.$model->image, __DIR__."/../web/uploads/course/".$name);
+                Util::Thumbnail($model->image, __DIR__."/../web/uploads/course/".$name,262,176);
+                $model->save();
+            }
+            $model->save();
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
+
 
         return $this->render('create', [
             'model' => $model,
@@ -86,9 +106,28 @@ class CourseController extends Controller
     {
         $model = $this->findModel($id);
 
+        $prefix = time();
+        $old_image = $model->image;
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if ($model->image) {
+                $model->image->saveAs('uploads/course/' .$prefix. TextUtility::alias($model->image->baseName) . '.' . $model->image->extension);
+                $name = $prefix. TextUtility::alias($model->image->baseName) . '.' . $model->image->extension;
+                $model->image = 'http://apistat.beta.vn/uploads/course/'.$name;
+                Util::Thumbnail($model->image, __DIR__."/../web/uploads/course/".$name,262,176);
+            }
+            if($model->image ==''){
+                $model->image = $old_image;
+            }
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
+
+
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        }
 
         return $this->render('update', [
             'model' => $model,

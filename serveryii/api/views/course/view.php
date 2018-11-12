@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\mysql\db\Course */
+/* @var $model common\models\mysql\modeldb\Course */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Courses', 'url' => ['index']];
@@ -30,6 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
+            'description:ntext',
+            'image',
+            'rate',
+            'price',
+            'created_time',
+            'updated_time',
         ],
     ]) ?>
 
