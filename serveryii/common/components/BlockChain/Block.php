@@ -25,6 +25,14 @@ class Block
         $this->timeHash = $timeHash;
         $this->data = $data;
         $this->hash = $this->execHash();
+        //fwrite('/blockchain/'.$this->hash.'.json', json_encode($this));
+
+        $content = json_encode($this);
+        $fp = fopen($_SERVER['DOCUMENT_ROOT'] . "blockchain/$this->hash".'.json','wb');
+        //$fp = fopen($_SERVER['DOCUMENT_ROOT'] . "blockchain/myText.txt","wb");
+        fwrite($fp,$content);
+        fclose($fp);
+
     }
 
     public function execHash()
