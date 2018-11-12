@@ -32,7 +32,7 @@ use common\components\TextUtility;
                         <div class="card-body p-3 pos-relative row">
                             <!-- Image content -->
                             <div class="col-md-4 mb-2 mb-md-0">
-                                <img class="rounded img-fluid" src="/<?=$value->image?>" alt="<?=$value->name?>">
+                                <img class="rounded img-fluid" src="<?=$value->image?>" alt="<?=$value->name?>">
                             </div>
                             <!-- Product details -->
                             <div class="col-md-8 d-flex flex-column align-items-start">

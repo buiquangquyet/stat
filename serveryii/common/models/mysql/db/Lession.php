@@ -15,6 +15,7 @@ use Yii;
  * @property string $link_video
  * @property string $content
  * @property string $sugget_vocabulary
+ * @property string $image
  *
  * @property Course $course
  */
@@ -36,7 +37,7 @@ class Lession extends \yii\db\ActiveRecord
         return [
             [['course_id'], 'integer'],
             [['description', 'content'], 'string'],
-            [['name', 'alias', 'link_video', 'sugget_vocabulary'], 'string', 'max' => 255],
+            [['name', 'alias', 'link_video', 'sugget_vocabulary', 'image'], 'string', 'max' => 255],
             [['course_id'], 'exist', 'skipOnError' => true, 'targetClass' => Course::className(), 'targetAttribute' => ['course_id' => 'id']],
         ];
     }
@@ -55,6 +56,7 @@ class Lession extends \yii\db\ActiveRecord
             'link_video' => 'Link Video',
             'content' => 'Content',
             'sugget_vocabulary' => 'Sugget Vocabulary',
+            'image' => 'Image',
         ];
     }
 

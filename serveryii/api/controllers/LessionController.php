@@ -2,12 +2,15 @@
 
 namespace api\controllers;
 
+use common\components\TextUtility;
+use common\components\Util;
 use Yii;
 use common\models\mysql\db\Lession;
 use common\models\mysql\modeldb\LessionRewrite;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * LessionController implements the CRUD actions for Lession model.
@@ -66,6 +69,22 @@ class LessionController extends Controller
     {
         $model = new Lession();
 
+        $prefix = time();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if ($model->image) {
+                $model->image->saveAs('uploads/lession/' .$prefix. TextUtility::alias($model->image->baseName) . '.' . $model->image->extension);
+                $name = $prefix. TextUtility::alias($model->image->baseName) . '.' . $model->image->extension;
+                $model->image = 'http://apistat.beta.vn/uploads/lession/'.$name;
+                //Util::Thumbnail('http://apistat.beta.vn/'.$model->image, __DIR__."/../web/uploads/course/".$name);
+                Util::Thumbnail($model->image, __DIR__."/../web/uploads/lession/".$name,262,176);
+                $model->save();
+            }
+            $model->save();
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -86,11 +105,29 @@ class LessionController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $prefix = time();
+        $old_image = $model->image;
 
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if ($model->image) {
+                $model->image->saveAs('uploads/lession/' .$prefix. TextUtility::alias($model->image->baseName) . '.' . $model->image->extension);
+                $name = $prefix. TextUtility::alias($model->image->baseName) . '.' . $model->image->extension;
+                $model->image = 'http://apistat.beta.vn/uploads/lession/'.$name;
+                Util::Thumbnail($model->image, __DIR__."/../web/uploads/lession/".$name,262,176);
+            }
+            if($model->image ==''){
+                $model->image = $old_image;
+            }
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        }
+//
         return $this->render('update', [
             'model' => $model,
         ]);

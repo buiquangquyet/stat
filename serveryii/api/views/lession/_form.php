@@ -27,6 +27,10 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'sugget_vocabulary')->textInput(['maxlength' => true]) ?>
 
+
+    <?php echo $form->field($model, 'image')->fileInput() ?>
+    <img src="<?=$model->image?>" alt="test"/>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
