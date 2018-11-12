@@ -34,3 +34,6 @@ phpunit.phar
 
 # vagrant runtime
 /.vagrant
+
+#blockchain
+/serveryii/api/web/blockchain/*
