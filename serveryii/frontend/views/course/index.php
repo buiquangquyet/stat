@@ -50,7 +50,7 @@ use common\components\TextUtility;
                                 </p>
                                 <p class="text-muted text-xs"><?=$value->description?></p>
                                 <div class="mt-auto">
-                                    <a href="shop-cart.html" class="btn btn-primary btn-sm"> Detail</a>
+                                    <a href="/lession/<?=TextUtility::alias($value->name)?>-<?=$value->id?>.html" class="btn btn-primary btn-sm"> Detail</a>
                                     <a href="#" class="btn btn-link btn-sm"><i class="fa fa-heart"></i> Add to Wishlist</a>
                                     <p class="text-muted text-xs d-none d-lg-inline">129 in stock</p>
                                 </div>
