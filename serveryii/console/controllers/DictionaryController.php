@@ -53,7 +53,7 @@ class DictionaryController extends Controller
             echo '$userName: '.$userName.PHP_EOL;
             $itemPush->send_time = date('Y-m-d H:i:s');
             $itemPush->save(false);
-
+            $domain = Yii::$app->params['domain_api'];
 
             if(!empty($itemPush)){
                 echo $itemPush->word.PHP_EOL;
@@ -62,13 +62,13 @@ class DictionaryController extends Controller
                     'notification'=>[
                         "title"=> $itemPush->word,
                         "body"=> $itemPush->mean.' -- '.$itemPush->sentence,
-                        "icon"=> $itemPush->image,
+                        "icon"=> $domain.$itemPush->image,
                         "click_action"=> !empty($itemPush->link)?$itemPush->link:''
                     ],
                     'to'=>$value
                 ];
                 $url = 'https://fcm.googleapis.com/fcm/send';
-
+                print_r($data);
                 $client = new Client();
                 $response = $client->createRequest()
                     ->setFormat(Client::FORMAT_JSON)
