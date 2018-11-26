@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51c86989-8e47-4b58-9885-02209eff281e" name="Default" comment="dev">
+    <list default="true" id="51c86989-8e47-4b58-9885-02209eff281e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client" afterPath="$PROJECT_DIR$/client" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serveryii/console/controllers/DictionaryController.php" afterPath="$PROJECT_DIR$/serveryii/console/controllers/DictionaryController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -568,7 +567,7 @@
       <workItem from="1543022381889" duration="715000" />
       <workItem from="1543031295498" duration="1583000" />
       <workItem from="1543202941376" duration="664000" />
-      <workItem from="1543219901014" duration="281000" />
+      <workItem from="1543219901014" duration="288000" />
     </task>
     <task id="LOCAL-00001" summary="dev">
       <created>1520051419190</created>
@@ -647,11 +646,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541991818452</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="dev">
+      <created>1543220184862</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1543220184862</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162959000" />
+    <option name="totallyTimeSpent" value="162966000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
