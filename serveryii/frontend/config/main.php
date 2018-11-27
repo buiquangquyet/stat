@@ -40,7 +40,10 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
+            'suffix' => '',
             'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'dictionary'],
                 'GET course/<name:[0-9a-zA-Z_-]+>-<id:\d+>.html' => 'course/index',
                 'GET lession/<name:[0-9a-zA-Z_-]+>-<id:\d+>.html' => 'lession/index',
             ],
