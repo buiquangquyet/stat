@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51c86989-8e47-4b58-9885-02209eff281e" name="Default" comment="dev">
+    <list default="true" id="51c86989-8e47-4b58-9885-02209eff281e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client" afterPath="$PROJECT_DIR$/client" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serveryii/.gitignore" afterPath="$PROJECT_DIR$/serveryii/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serveryii/api/controllers/UserController.php" afterPath="$PROJECT_DIR$/serveryii/api/controllers/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serveryii/frontend/controllers/DictionaryController.php" afterPath="$PROJECT_DIR$/serveryii/frontend/controllers/DictionaryController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,8 +43,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/serveryii/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="525">
+              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -490,7 +487,7 @@
       <workItem from="1543301251505" duration="4366000" />
       <workItem from="1543378640587" duration="1066000" />
       <workItem from="1543562768884" duration="684000" />
-      <workItem from="1543568727321" duration="39000" />
+      <workItem from="1543568727321" duration="54000" />
     </task>
     <task id="LOCAL-00001" summary="dev">
       <created>1520051419190</created>
@@ -583,11 +580,18 @@
       <option name="project" value="LOCAL" />
       <updated>1543305066351</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="dev">
+      <created>1543568775009</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1543568775009</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169867000" />
+    <option name="totallyTimeSpent" value="169882000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -996,8 +1000,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/serveryii/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="525">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
