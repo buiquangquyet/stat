@@ -14,4 +14,16 @@ use yii\rest\ActiveController;
 class DictionaryController extends ActiveController
 {
     public $modelClass = 'common\models\mysql\modeldb\Dictionary';
+
+
+    public function fields()
+    {
+        return ['id'];
+    }
+
+    public function extraFields()
+    {
+        return ['sentence'];
+    }
+
 }

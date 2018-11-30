@@ -29,16 +29,11 @@ class UserController extends ActiveController
 
 
 
-// filter out some fields, best used when you want to inherit the parent implementation
-// and blacklist some sensitive fields.
-//    public function fields()
+
+
+//    public function extraFields()
 //    {
-//        $fields = parent::fields();
-//
-//        // remove fields that contain sensitive information
-//        unset($fields['auth_key'], $fields['password_hash'], $fields['password_reset_token']);
-//
-//        return $fields;
+//        return ['profile'];
 //    }
 
     public $modelClass = 'common\models\mysql\db\User';
@@ -52,7 +47,7 @@ class UserController extends ActiveController
 //            'email' => 'email_address',
 //            // field name is "name", its value is defined by a PHP callback
 //            'name' => function ($model) {
-//                return $model->first_name . ' ' . $model->last_name;
+//                return $model->id . ' ' . $model->email;
 //            },
 //        ];
 //    }
