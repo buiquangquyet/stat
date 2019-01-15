@@ -125,6 +125,7 @@ class DictionaryController extends Controller
             if($model->image ==''){
                 $model->image = $old_image;
             }
+            $model->creat_time = date('Y-m-d H:i:s');
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -143,9 +144,9 @@ class DictionaryController extends Controller
      */
     public function actionDelete($id)
     {
-//        $this->findModel($id)->delete();
-//
-//        return $this->redirect(['index']);
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
     }
 
     /**
