@@ -3,6 +3,7 @@
 .idea/*
 /client/node_modules
 /.idea
+.idea/workspace.xml
 /var/www/stat/serveryii/api/web/uploads/*
 # netbeans project files
 nbproject
