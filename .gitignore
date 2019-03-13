@@ -1,12 +1,8 @@
-# yii console commands
-/yii
-/yii_test
-/yii_test.bat
-
 # phpstorm project files
 .idea
 .idea/*
-
+/client/node_modules
+/.idea
 # netbeans project files
 nbproject
 
@@ -19,7 +15,7 @@ nbproject
 Thumbs.db
 
 # composer vendor dir
-/vendor
+/serveryii/vendor
 
 # composer itself is not needed
 composer.phar
